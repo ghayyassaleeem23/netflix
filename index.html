@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone</title>
+    <link rel="icon" href="favicon.png"><!-- Latest compiled and minified CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('../netflix/netflix.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .logo {
+            font-size: 40px;
+            font-weight: bold;
+            color: red;
+            font-variant: small-caps;
+            margin: 0;
+        }
+
+        .sign-in {
+            background-color: red;
+            height: 40px;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+      
+        main {
+            margin-top: 150px;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: 61px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            margin-bottom: 20px;
+            word-spacing: 8px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            word-spacing: 5px;
+        }
+
+        .email-signup {
+            display: inline-block;
+        }
+
+        .email-signup input {
+            padding: 10px;
+            width: 300px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        .email-signup button {
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 4px;
+        }
+
+        img.main-image {
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .showcase div {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .showcase div:hover {
+            transform: scale(1.05);
+            background-color: rgba(255, 0, 0, 0.8);
+        }
+
+        .showcase img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .showcase div:hover img {
+            transform: scale(1.1);
+        }
+.ul:hover{
+    background-color:blue;
+    color:white;
+}
+        .showcase h4 {
+            margin: 10px 0 0;
+            font-size: 18px;
+            color: #fff;
+            position: absolute;
+            bottom: 40px;
+            left: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .showcase p {
+            margin: 0;
+            font-size: 14px;
+            color: #ccc;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        @media screen and (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .email-signup input {
+                width: 200px;
+            }
+
+            .sign-in {
+                font-size: 14px;
+            }
+        }
+          .animated-text {
+            font-size: 36px;
+            width: 30%;
+            height: 30vh;
+ 
+             font-weight: bold;
+            color: red;
+            animation: fadeInUp 2s ease-out;
+ 
+         }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+              .dropdown {
+            position: relative;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .dropbtn {
+            background-color:red;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .dropbtn:hover {
+            background-color: red;
+            transform: scale(1.1);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: red;
+            color:white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color:red;
+            color:white
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+       background-color:black;
+            color:white        }
+        h1{ 
+  font-family: Tahoma, sans-serif;                       
+         }        .wrapper {
+            max-width: 1200px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-container {
+            display: flex;
+            flex-direction: row;
+            overflow: hidden;
+            white-space: nowrap; /* Ensure no wrapping */
+        }
+        .carousel {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 16px;
+            padding: 10px;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+        .carousel .movie {
+            flex: 0 0 auto;
+            width: 200px;
+            height: 300px;
+            border-radius: 8px;
+            background: linear-gradient(to left top, black, red);
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease, border 0.3s ease;
+            border: 4px solid black; /* Black border */
+        }
+        .carousel .movie:hover {
+            transform: scale(1.05);
+        }
+        .movie img {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .movie h3 {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: white;
+        }
+        @media screen and (max-width: 900px) {
+            .carousel {
+                gap: 12px;
+            }
+            .carousel .movie {
+                width: 160px;
+                height: 240px;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .carousel {
+                gap: 8px;
+            }
+            .carousel .movie {
+                width: 120px;
+                height: 180px;
+            }
+        }   * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        } .wrapper {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+            height: 50vh;
+            border-radius: 10px;
+            padding: 10px;
+            color:black;
+        }
+        .img1{height: 40vh;}
+
+        .carousel-container {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            will-change: transform;
+        }
+
+        .movie {
+            flex: 0 0 auto;
+            width: 200px; /* Width of each movie item */
+            margin-right: 20px; /* Space between items */
+            position: relative;
+        }
+
+        .movie img {
+            width: 100%;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .movie:hover img {
+            transform: scale(1.1); /* Zoom effect on hover */
+        }
+
+        h3 {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 16px;
+            color:white; /* White text for better visibility */
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            user-select: none;
+            z-index: 10;
+            border-radius: 50%;
+        }
+
+        .arrow.left {
+            left: 10px;
+            transform: translateY(-50%);
+        }
+
+        .arrow.right {
+            right: 10px;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Netflix</div>
+
+        <button style="margin-left:700px " class="sign-in" onclick="window.location.href='setup1.html';">Sign In</button>
+        <div class="dropdown">
+  <button type="button" style="background-color:red ;color:white" class="btn dropdown-toggle" data-bs-toggle="dropdown">
+   select languages    </button>
+  <ul class="dropdown-menu ul:hover">
+    <li><a class="dropdown-item" href="#">English</a></li>
+    <li><a class="dropdown-item" href="#">French</a></li>
+    <li><a class="dropdown-item" href="#">Urdu</a></li>
+  </ul>
+</div>
+    </header>
+    <main>
+        <img class="main-image" src="https://images.ctfassets.net/4cd45et68cgf/5y7i4snzpqkr2oHRCRAkN4/c144749aa0df745e43367744af149f66/Android_Collage_1920x1080__UCAN_En.jpg" alt="Netflix collage image">
+        <h1>Unlimited movies,<br> TV shows, and much more</h1>
+        <h3>Start exploring interesting & intellectual content.</h3>
+        <p>Continue by entering your email address...</p>
+        <div class="email-signup">
+            <form id="signupForm">
+                <input type="email" id="email" placeholder="Email address" required>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+<H1 style="font-size: 30px;
+color: white;
+margin-top: 200px;
+margin-right: 1000px;
+">Trending Now</H1>
+        <!-- Showcase Section --> <div class="animated-text">
+        <div  style="font-size:15px" class="dropdown">
+    <button class="dropbtn">Select Country⬇</button>
+    <div class="dropdown-content">
+        <a href="#">Pakistan</a>
+        <a href="#">Canada</a>
+        <a href="#">Australia</a>
+        <a href="#">USA</a>    
+        <a href="#">UK</a>
+    </div>
+</div><div  style="margin-left:50px;font-size:15px" class="dropdown">
+    <button class="dropbtn">Select Movie⬇</button>
+    <div class="dropdown-content">
+        <a href="#">T-V ahows</a>
+        <a href="#">Comedy movies</a>
+        <a href="#">Horror movies</a>
+        <a href="#">Adult Movies</a>
+    </div>
+</div>
+    </div>
+    <div class="wrapper">
+        <div class="carousel-container">
+            <div class="carousel">
+                <div class="movie">
+                    <img class="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPy0xL7tIvv4mKg-WpAAjl31fZl9AbFW1WQ&s" alt="The Union">
+                    <h3>The Union</h3>
+                </div>
+                <div class="movie">
+                    <img class="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzQvxvSAf2x5sKT9g0YRoLptTv9J3I-xHu8g&s" alt="Kingsman: The Secret Service">
+                    <h3>Kingsman</h3>
+                </div>
+                <div class="movie">
+                    <img class="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxlyWqVt8Suq7PrCUt6ou4ceErtmIe_RopPA&s" alt="Kingsman: The Golden Circle">
+                    <h3> The Golden Circle</h3>
+                </div>
+                <div class="movie">
+                    <img class="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScuA-6BKnou4QdzTFksLq61QZXZ1d8zy3s-g&s" alt="Saving Bikini Bottom: The Sandy Cheeks Movie">
+                    <h3>Saving Bikini </h3>
+                </div>
+                <div class="movie">
+                    <img class="img1" src="https://m.media-amazon.com/images/M/MV5BZjA3ZjA5MWMtYTNkMi00NTU3LWJjNzYtZjk1M2YzZDI2YWNhXkEyXkFqcGc@._V1_.jpg" alt="Inside the Mind of a Dog">
+                    <h3>  Mind of a Dog</h3>
+                </div>
+                <div class="movie">
+                    <img class="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfidcWK03GoDdEojf9YbJB31_GovkBrI_FYQ&s" alt="Ferdinand">
+                    <h3>Ferdinand</h3>
+                </div>
+                <div class="movie">
+                    <img class="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFtqbcTipNWZWi40dxV8_EvlJenB7RCzPLPw&s" alt="Ambulance">
+                    <h3>Ambulance</h3>
+                </div>
+                <!-- Duplicate movies for continuous scrolling effect -->
+                <div class="movie">
+                    <img class="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXPy0xL7tIvv4mKg-WpAAjl31fZl9AbFW1WQ&s" alt="The Union">
+                    <h3>The Union</h3>
+                </div>
+                <div class="movie">
+                    <img class="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzQvxvSAf2x5sKT9g0YRoLptTv9J3I-xHu8g&s" alt="Kingsman: The Secret Service">
+                    <h3>  Secret Service</h3>
+                </div>
+                <div class="movie">
+                    <img class="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxlyWqVt8Suq7PrCUt6ou4ceErtmIe_RopPA&s" alt="Kingsman: The Golden Circle">
+                    <h3>  Golden Circle</h3>
+                </div>
+                <div class="movie">
+                    <img class="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScuA-6BKnou4QdzTFksLq61QZXZ1d8zy3s-g&s" alt="Saving Bikini Bottom: The Sandy Cheeks Movie">
+                    <h3>  Bottom</h3>
+                </div>
+                <div class="movie">
+                    <img class="img1" src="https://m.media-amazon.com/images/M/MV5BZjA3ZjA5MWMtYTNkMi00NTU3LWJjNzYtZjk1M2YzZDI2YWNhXkEyXkFqcGc@._V1_.jpg" alt="Inside the Mind of a Dog">
+                    <h3>  of a Dog</h3>
+                </div>
+                <div class="movie">
+                    <img class="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfidcWK03GoDdEojf9YbJB31_GovkBrI_FYQ&s" alt="Ferdinand">
+                    <h3>Ferdinand</h3>
+                </div>
+                <div class="movie">
+                    <img class="img1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFtqbcTipNWZWi40dxV8_EvlJenB7RCzPLPw&s" alt="Ambulance">
+                    <h3>Ambulance</h3>
+                </div>
+            </div>
+            <div class="arrow left">&lt;</div>
+            <div class="arrow right">&gt;</div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const carousel = document.querySelector('.carousel');
+            const leftArrow = document.querySelector('.arrow.left');
+            const rightArrow = document.querySelector('.arrow.right');
+            const items = document.querySelectorAll('.movie');
+            const totalItems = items.length;
+            let index = 0;
+            const itemWidth = 220; // Width + margin of each item
+
+            function moveCarousel() {
+                const offset = index * itemWidth;
+                carousel.style.transform = `translateX(-${offset}px)`;
+                carousel.style.transition = `transform 0.5s ease-in-out`;
+            }
+
+            rightArrow.addEventListener('click', function() {
+                index++;
+                if (index >= totalItems) {
+                    index = 0;
+                }
+                moveCarousel();
+            });
+
+            leftArrow.addEventListener('click', function() {
+                index--;
+                if (index < 0) {
+                    index = totalItems - 1;
+                }
+                moveCarousel();
+            });
+
+            // Auto-slide every 3 seconds
+            setInterval(() => {
+                index++;
+                if (index >= totalItems) {
+                    index = 0;
+                }
+                moveCarousel();
+            }, 3000);
+        });
+    </script>
+    
+    <h1 style="text-align:left">Adults:</h1>
+        <div class="showcase">
+          
+            <div onclick="window.location.href='#';">
+                <img src="https://m.media-amazon.com/images/M/MV5BODcwOTg2MDE3NF5BMl5BanBnXkFtZTgwNTUyNTY1NjM@._V1_FMjpg_UX1000_.jpg" alt="Daredevil">
+                <h4>Daredevil</h4>
+                <p>2015–2018 | 39 eps | TV-MA | 8.6 (481K)</p>
+            </div>
+            <div onclick="window.location.href='moneyheist.html';">
+                <img src="https://resizing.flixster.com/ITt1FPrFePNR6FSqZrZK7BocG2U=/ems.cHJkLWVtcy1hc3NldHMvdHZzZWFzb24vUlRUVjEwMTMyOTMud2VicA==" alt="Money Heist">
+                <h4>Money Heist</h4>
+                <p>2017–2021 | 41 eps | TV-MA | 8.2 (543K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRATLXhda4SGvmhUTEfP7PTq4IkhfAWdRU_Lg&s" alt="Narcos">
+                <h4>Narcos</h4>
+                <p>2015–2017 | 30 eps | TV-MA | 8.8 (479K)</p>
+            </div>
+            <div onclick="window.location.href='top boy .html';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnWYNo552KC94XzKEZaqQhyLO5rqJhevYsFQ&s" alt="Top Boy">
+                <h4>Top Boy</h4>
+                <p>2011–2023 | 32 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHWnWxYa-n7XUyYx2FV50NFdnCePo0wJrAig&s" alt="Stranger Things">
+                <h4>Stranger Things</h4>
+                <p>2016–2025 | 42 eps | TV-14</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://m.media-amazon.com/images/M/MV5BMTY0NzkxNDcxNF5BMl5BanBnXkFtZTgwOTI5ODM5MzI@._V1_FMjpg_UX1000_.jpg" alt="Godless">
+                <h4>Godless</h4>
+                <p>2017 | 7 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0KFZHROuZ_7Nirg5MSzFJCEQJD1gjc1n58A&s" alt="Dark">
+                <h4>Dark</h4>
+                <p>2017–2020 | 26 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc1T7gWYnT_sFjYFdmMlBjiXhTVsZxQAYd8Q&s" alt="Our Planet">
+                <h4>Our Planet</h4>
+                <p>2019–2023 | 12 eps | TV-PG</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://m.media-amazon.com/images/M/MV5BYWE3MDVkN2EtNjQ5MS00ZDQ4LTliNzYtMjc2YWMzMDEwMTA3XkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_.jpg" alt="Our Planet">
+                <h4>Squid game</h4>
+                <p>
+2021 ‧ Thriller ‧ 1 season
+</p>
+            </div>
+            <div onclick="window.location.href='wednesday.html';">
+                <img src="  https://m.media-amazon.com/images/M/MV5BM2ZmMjEyZmYtOGM4YS00YTNhLWE3ZDMtNzQxM2RhNjBlODIyXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg" alt="Our Planet">
+                <h4>Wednesday</h4>
+                <p>
+2022 ‧ Horror ‧ 1 season
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="   https://m.media-amazon.com/images/M/MV5BZTlkZTE3OWItZDFmNi00NDhlLTlhZGEtMDE4NWZlMDM3MzY1XkEyXkFqcGc@._V1_.jpg" alt="Our Planet">
+                <h4>Dahmer</h4>
+                <p>
+2022 ‧ Horror ‧ 1 2022 ‧ Drama ‧ 1 season
+
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+        </div>
+             <h1 style="text-align:left">Kids:</h1>
+ <div class="showcase">
+            <div onclick="window.location.href='#';">
+                <img src="https://m.media-amazon.com/images/M/MV5BODcwOTg2MDE3NF5BMl5BanBnXkFtZTgwNTUyNTY1NjM@._V1_FMjpg_UX1000_.jpg" alt="Daredevil">
+                <h4>Daredevil</h4>
+                <p>2015–2018 | 39 eps | TV-MA | 8.6 (481K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://resizing.flixster.com/ITt1FPrFePNR6FSqZrZK7BocG2U=/ems.cHJkLWVtcy1hc3NldHMvdHZzZWFzb24vUlRUVjEwMTMyOTMud2VicA==" alt="Money Heist">
+                <h4>Money Heist</h4>
+                <p>2017–2021 | 41 eps | TV-MA | 8.2 (543K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRATLXhda4SGvmhUTEfP7PTq4IkhfAWdRU_Lg&s" alt="Narcos">
+                <h4>Narcos</h4>
+                <p>2015–2017 | 30 eps | TV-MA | 8.8 (479K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnWYNo552KC94XzKEZaqQhyLO5rqJhevYsFQ&s" alt="Top Boy">
+                <h4>Top Boy</h4>
+                <p>2011–2023 | 32 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHWnWxYa-n7XUyYx2FV50NFdnCePo0wJrAig&s" alt="Stranger Things">
+                <h4>Stranger Things</h4>
+                <p>2016–2025 | 42 eps | TV-14</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://m.media-amazon.com/images/M/MV5BMTY0NzkxNDcxNF5BMl5BanBnXkFtZTgwOTI5ODM5MzI@._V1_FMjpg_UX1000_.jpg" alt="Godless">
+                <h4>Godless</h4>
+                <p>2017 | 7 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0KFZHROuZ_7Nirg5MSzFJCEQJD1gjc1n58A&s" alt="Dark">
+                <h4>Dark</h4>
+                <p>2017–2020 | 26 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc1T7gWYnT_sFjYFdmMlBjiXhTVsZxQAYd8Q&s" alt="Our Planet">
+                <h4>Our Planet</h4>
+                <p>2019–2023 | 12 eps | TV-PG</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://m.media-amazon.com/images/M/MV5BYWE3MDVkN2EtNjQ5MS00ZDQ4LTliNzYtMjc2YWMzMDEwMTA3XkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_.jpg" alt="Our Planet">
+                <h4>Squid game</h4>
+                <p>
+2021 ‧ Thriller ‧ 1 season
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://m.media-amazon.com/images/M/MV5BM2ZmMjEyZmYtOGM4YS00YTNhLWE3ZDMtNzQxM2RhNjBlODIyXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg" alt="Our Planet">
+                <h4>Wednesday</h4>
+                <p>
+2022 ‧ Horror ‧ 1 season
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="   https://m.media-amazon.com/images/M/MV5BZTlkZTE3OWItZDFmNi00NDhlLTlhZGEtMDE4NWZlMDM3MzY1XkEyXkFqcGc@._V1_.jpg" alt="Our Planet">
+                <h4>Dahmer</h4>
+                <p>
+2022 ‧ Horror ‧ 1 2022 ‧ Drama ‧ 1 season
+
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+        </div>
+       <h1 style="text-align:left">Teens:</h1>
+ <div class="showcase">
+            <div onclick="window.location.href='#';">
+                <img src="https://m.media-amazon.com/images/M/MV5BODcwOTg2MDE3NF5BMl5BanBnXkFtZTgwNTUyNTY1NjM@._V1_FMjpg_UX1000_.jpg" alt="Daredevil">
+                <h4>Daredevil</h4>
+                <p>2015–2018 | 39 eps | TV-MA | 8.6 (481K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://resizing.flixster.com/ITt1FPrFePNR6FSqZrZK7BocG2U=/ems.cHJkLWVtcy1hc3NldHMvdHZzZWFzb24vUlRUVjEwMTMyOTMud2VicA==" alt="Money Heist">
+                <h4>Money Heist</h4>
+                <p>2017–2021 | 41 eps | TV-MA | 8.2 (543K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRATLXhda4SGvmhUTEfP7PTq4IkhfAWdRU_Lg&s" alt="Narcos">
+                <h4>Narcos</h4>
+                <p>2015–2017 | 30 eps | TV-MA | 8.8 (479K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnWYNo552KC94XzKEZaqQhyLO5rqJhevYsFQ&s" alt="Top Boy">
+                <h4>Top Boy</h4>
+                <p>2011–2023 | 32 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHWnWxYa-n7XUyYx2FV50NFdnCePo0wJrAig&s" alt="Stranger Things">
+                <h4>Stranger Things</h4>
+                <p>2016–2025 | 42 eps | TV-14</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://m.media-amazon.com/images/M/MV5BMTY0NzkxNDcxNF5BMl5BanBnXkFtZTgwOTI5ODM5MzI@._V1_FMjpg_UX1000_.jpg" alt="Godless">
+                <h4>Godless</h4>
+                <p>2017 | 7 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0KFZHROuZ_7Nirg5MSzFJCEQJD1gjc1n58A&s" alt="Dark">
+                <h4>Dark</h4>
+                <p>2017–2020 | 26 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc1T7gWYnT_sFjYFdmMlBjiXhTVsZxQAYd8Q&s" alt="Our Planet">
+                <h4>Our Planet</h4>
+                <p>2019–2023 | 12 eps | TV-PG</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://m.media-amazon.com/images/M/MV5BYWE3MDVkN2EtNjQ5MS00ZDQ4LTliNzYtMjc2YWMzMDEwMTA3XkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_.jpg" alt="Our Planet">
+                <h4>Squid game</h4>
+                <p>
+2021 ‧ Thriller ‧ 1 season
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://m.media-amazon.com/images/M/MV5BM2ZmMjEyZmYtOGM4YS00YTNhLWE3ZDMtNzQxM2RhNjBlODIyXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg" alt="Our Planet">
+                <h4>Wednesday</h4>
+                <p>
+2022 ‧ Horror ‧ 1 season
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="   https://m.media-amazon.com/images/M/MV5BZTlkZTE3OWItZDFmNi00NDhlLTlhZGEtMDE4NWZlMDM3MzY1XkEyXkFqcGc@._V1_.jpg" alt="Our Planet">
+                <h4>Dahmer</h4>
+                <p>
+2022 ‧ Horror ‧ 1 2022 ‧ Drama ‧ 1 season
+
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div><div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+        </div>
+           <h1 style="text-align:left">Young Adults:</h1>
+ <div class="showcase">
+            <div onclick="window.location.href='#';">
+                <img src="https://m.media-amazon.com/images/M/MV5BODcwOTg2MDE3NF5BMl5BanBnXkFtZTgwNTUyNTY1NjM@._V1_FMjpg_UX1000_.jpg" alt="Daredevil">
+                <h4>Daredevil</h4>
+                <p>2015–2018 | 39 eps | TV-MA | 8.6 (481K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://resizing.flixster.com/ITt1FPrFePNR6FSqZrZK7BocG2U=/ems.cHJkLWVtcy1hc3NldHMvdHZzZWFzb24vUlRUVjEwMTMyOTMud2VicA==" alt="Money Heist">
+                <h4>Money Heist</h4>
+                <p>2017–2021 | 41 eps | TV-MA | 8.2 (543K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRATLXhda4SGvmhUTEfP7PTq4IkhfAWdRU_Lg&s" alt="Narcos">
+                <h4>Narcos</h4>
+                <p>2015–2017 | 30 eps | TV-MA | 8.8 (479K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnWYNo552KC94XzKEZaqQhyLO5rqJhevYsFQ&s" alt="Top Boy">
+                <h4>Top Boy</h4>
+                <p>2011–2023 | 32 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHWnWxYa-n7XUyYx2FV50NFdnCePo0wJrAig&s" alt="Stranger Things">
+                <h4>Stranger Things</h4>
+                <p>2016–2025 | 42 eps | TV-14</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://m.media-amazon.com/images/M/MV5BMTY0NzkxNDcxNF5BMl5BanBnXkFtZTgwOTI5ODM5MzI@._V1_FMjpg_UX1000_.jpg" alt="Godless">
+                <h4>Godless</h4>
+                <p>2017 | 7 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0KFZHROuZ_7Nirg5MSzFJCEQJD1gjc1n58A&s" alt="Dark">
+                <h4>Dark</h4>
+                <p>2017–2020 | 26 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc1T7gWYnT_sFjYFdmMlBjiXhTVsZxQAYd8Q&s" alt="Our Planet">
+                <h4>Our Planet</h4>
+                <p>2019–2023 | 12 eps | TV-PG</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://m.media-amazon.com/images/M/MV5BYWE3MDVkN2EtNjQ5MS00ZDQ4LTliNzYtMjc2YWMzMDEwMTA3XkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_.jpg" alt="Our Planet">
+                <h4>Squid game</h4>
+                <p>
+2021 ‧ Thriller ‧ 1 season
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://m.media-amazon.com/images/M/MV5BM2ZmMjEyZmYtOGM4YS00YTNhLWE3ZDMtNzQxM2RhNjBlODIyXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg" alt="Our Planet">
+                <h4>Wednesday</h4>
+                <p>
+2022 ‧ Horror ‧ 1 season
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="   https://m.media-amazon.com/images/M/MV5BZTlkZTE3OWItZDFmNi00NDhlLTlhZGEtMDE4NWZlMDM3MzY1XkEyXkFqcGc@._V1_.jpg" alt="Our Planet">
+                <h4>Dahmer</h4>
+                <p>
+2022 ‧ Horror ‧ 1 2022 ‧ Drama ‧ 1 season
+
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+            
+        </div>
+             <h1 style="text-align:left"> Seniors:</h1>
+  <div class="showcase">
+            <div onclick="window.location.href='#';">
+                <img src="https://m.media-amazon.com/images/M/MV5BODcwOTg2MDE3NF5BMl5BanBnXkFtZTgwNTUyNTY1NjM@._V1_FMjpg_UX1000_.jpg" alt="Daredevil">
+                <h4>Daredevil</h4>
+                <p>2015–2018 | 39 eps | TV-MA | 8.6 (481K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://resizing.flixster.com/ITt1FPrFePNR6FSqZrZK7BocG2U=/ems.cHJkLWVtcy1hc3NldHMvdHZzZWFzb24vUlRUVjEwMTMyOTMud2VicA==" alt="Money Heist">
+                <h4>Money Heist</h4>
+                <p>2017–2021 | 41 eps | TV-MA | 8.2 (543K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRATLXhda4SGvmhUTEfP7PTq4IkhfAWdRU_Lg&s" alt="Narcos">
+                <h4>Narcos</h4>
+                <p>2015–2017 | 30 eps | TV-MA | 8.8 (479K)</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnWYNo552KC94XzKEZaqQhyLO5rqJhevYsFQ&s" alt="Top Boy">
+                <h4>Top Boy</h4>
+                <p>2011–2023 | 32 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHWnWxYa-n7XUyYx2FV50NFdnCePo0wJrAig&s" alt="Stranger Things">
+                <h4>Stranger Things</h4>
+                <p>2016–2025 | 42 eps | TV-14</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="https://m.media-amazon.com/images/M/MV5BMTY0NzkxNDcxNF5BMl5BanBnXkFtZTgwOTI5ODM5MzI@._V1_FMjpg_UX1000_.jpg" alt="Godless">
+                <h4>Godless</h4>
+                <p>2017 | 7 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0KFZHROuZ_7Nirg5MSzFJCEQJD1gjc1n58A&s" alt="Dark">
+                <h4>Dark</h4>
+                <p>2017–2020 | 26 eps | TV-MA</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc1T7gWYnT_sFjYFdmMlBjiXhTVsZxQAYd8Q&s" alt="Our Planet">
+                <h4>Our Planet</h4>
+                <p>2019–2023 | 12 eps | TV-PG</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://m.media-amazon.com/images/M/MV5BYWE3MDVkN2EtNjQ5MS00ZDQ4LTliNzYtMjc2YWMzMDEwMTA3XkEyXkFqcGdeQXVyMTEzMTI1Mjk3._V1_.jpg" alt="Our Planet">
+                <h4>Squid game</h4>
+                <p>
+2021 ‧ Thriller ‧ 1 season
+</p>
+            </div>
+            <div onclick="window.location.href='#';">
+                <img src="  https://m.media-amazon.com/images/M/MV5BM2ZmMjEyZmYtOGM4YS00YTNhLWE3ZDMtNzQxM2RhNjBlODIyXkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg" alt="Our Planet">
+                <h4>Wednesday</h4>
+                <p>
+2022 ‧ Horror ‧ 1 season
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="   https://m.media-amazon.com/images/M/MV5BZTlkZTE3OWItZDFmNi00NDhlLTlhZGEtMDE4NWZlMDM3MzY1XkEyXkFqcGc@._V1_.jpg" alt="Our Planet">
+                <h4>Dahmer</h4>
+                <p>
+2022 ‧ Horror ‧ 1 2022 ‧ Drama ‧ 1 season
+
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+             <div onclick="window.location.href='#';">
+                <img src="  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROY61TPvGGleF08WpjWPcbLqIPsYYF2mVhFg&s" alt="Our Planet">
+                <h4>Red Notice
+</h4>
+                <p>
+2021 ‧ Action/Comedy ‧ 1h 58m
+</p>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carousel = document.querySelector('.carousel');
+            const carouselWidth = carousel.scrollWidth;
+            const viewportWidth = carousel.clientWidth;
+            let scrollLeft = 0;
+            const scrollStep = 1; // Number of pixels to scroll per interval
+            const scrollInterval = 10; // Interval in milliseconds for the auto-scrolling
+
+            function autoScroll() {
+                scrollLeft += scrollStep;
+                if (scrollLeft >= carouselWidth) {
+                    scrollLeft = 0;
+                }
+                carousel.style.transform = translateX(-${scrollLeft}px);
+            }
+
+            setInterval(autoScroll, scrollInterval);
+        });
+    </script>
+     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('signupForm');
+            const emailInput = document.getElementById('email');
+        
+            form.addEventListener('submit', (event) => {
+                // Prevent the form from submitting
+                event.preventDefault();
+        
+                // Validate email
+                if (validateEmail(emailInput.value)) {
+                    alert('Email is valid. Redirecting...');
+                    // Redirect to setup1.html or handle successful submission
+                    window.location.href = 'setup1.html';
+                } else {
+                    alert('Please enter a valid email address.');
+                }
+            });
+        
+            function validateEmail(email) {
+                // Basic email validation regex
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+        });
+        
+            </script>
+</body>
+  </html>
